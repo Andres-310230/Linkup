@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkUp - Inicio</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Link<span>Up</span></div>
+      <input type="text" id="search-bar" class="search-bar" placeholder="Buscar personas, empleos o publicaciones...">
+      <nav class="nav-links">
+        <a href="#" class="active">Inicio</a>
+        <a href="#">Mi Red</a>
+        <a href="#">Empleos</a>
+        <a href="#">Mensajes</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <!-- Columna Izquierda -->
+    <aside class="sidebar-left">
+      <div class="card profile-card">
+        <div class="cover-bg"></div>
+        <div class="avatar">U</div>
+        <h3>Usuario LinkUp</h3>
+        <p class="role">Profesional en crecimiento</p>
+        <hr>
+        <div class="stats">
+          <div><span>Contactos</span><strong>128</strong></div>
+          <div><span>Vistas</span><strong>45</strong></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Columna Central -->
+    <main class="feed-column">
+      <div class="card create-post">
+        <form id="post-form">
+          <div class="input-row">
+            <div class="avatar-sm">U</div>
+            <textarea id="post-input" rows="2" placeholder="Comparte una idea, logro o noticia..." required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Publicar</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="feed-list"></div>
+    </main>
+
+    <!-- Columna Derecha -->
+    <aside class="sidebar-right">
+      <div class="card">
+        <h4>Empleos recomendados</h4>
+        <div class="job-item">
+          <strong>Desarrollador Backend Python</strong>
+          <span>TechCorp • Remoto</span>
+        </div>
+        <div class="job-item">
+          <strong>Ingeniero de Datos Jr.</strong>
+          <span>DataFlow • Híbrido</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
