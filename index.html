@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkUp - Inicio</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #f3f2ef;
+      color: #191919;
+    }
+
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: 800;
+      color: #191919;
+    }
+
+    .logo span {
+      background: #0a66c2;
+      color: #fff;
+      padding: 1px 6px;
+      border-radius: 4px;
+      margin-left: 2px;
+    }
+
+    .search-bar {
+      flex: 1;
+      max-width: 340px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      border: 1px solid #d0d0d0;
+      background: #eef3f8;
+      outline: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #666666;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .nav-links a.active,
+    .nav-links a:hover {
+      color: #0a66c2;
+    }
+
+    .main-grid {
+      max-width: 1120px;
+      margin: 24px auto;
+      padding: 0 16px;
+      display: grid;
+      grid-template-columns: 240px 1fr 280px;
+      gap: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+
+    .profile-card {
+      padding: 0 0 16px;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .cover-bg {
+      height: 56px;
+      background: linear-gradient(135deg, #0a66c2, #004182);
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #eef3f8;
+      color: #0a66c2;
+      font-size: 24px;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: -32px auto 10px;
+      border: 3px solid #ffffff;
+    }
+
+    .profile-card h3 {
+      font-size: 16px;
+    }
+
+    .profile-card .role {
+      font-size: 13px;
+      color: #666666;
+      margin: 4px 0 12px;
+    }
+
+    .profile-card hr {
+      border: 0;
+      border-top: 1px solid #ebebeb;
+      margin-bottom: 12px;
+    }
+
+    .stats {
+      padding: 0 16px;
+      font-size: 13px;
+      color: #666666;
+    }
+
+    .stats div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+
+    .stats strong {
+      color: #0a66c2;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 12px;
+    }
+
+    .avatar-sm {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #0a66c2;
+      color: #ffffff;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    textarea {
+      width: 100%;
+      border: 1px solid #d0d0d0;
+      border-radius: 16px;
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 14px;
+      resize: none;
+      outline: none;
+    }
+
+    textarea:focus {
+      border-color: #0a66c2;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 12px;
+    }
+
+    .btn-primary {
+      background: #0a66c2;
+      color: #ffffff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: #004182;
+    }
+
+    .post-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .post-header h4 {
+      font-size: 15px;
+    }
+
+    .post-header span {
+      font-size: 12px;
+      color: #666666;
+    }
+
+    .post-body {
+      font-size: 14px;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    .post-actions {
+      display: flex;
+      gap: 8px;
+      border-top: 1px solid #f0f0f0;
+      padding-top: 10px;
+    }
+
+    .btn-action {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #666666;
+      cursor: pointer;
+    }
+
+    .btn-action:hover {
+      background: #f3f2ef;
+    }
+
+    .btn-action.liked {
+      color: #0a66c2;
+      background: #eef3f8;
+    }
+
+    .comments-box {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .comment-input-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .comment-input-row input {
+      flex: 1;
+      padding: 6px 12px;
+      border: 1px solid #d0d0d0;
+      border-radius: 16px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .comment-input-row button {
+      background: #eef3f8;
+      color: #0a66c2;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .comment-item {
+      background: #f8f9fa;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
+
+    .sidebar-right h4 {
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+
+    .job-item {
+      padding: 10px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .job-item:last-child {
+      border-bottom: none;
+    }
+
+    .job-item strong {
+      display: block;
+      font-size: 14px;
+      color: #0a66c2;
+      margin-bottom: 2px;
+    }
+
+    .job-item span {
+      font-size: 12px;
+      color: #666666;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">Link<span>Up</span></div>
+      <input type="text" id="search-bar" class="search-bar" placeholder="Buscar personas, empleos o publicaciones...">
+      <nav class="nav-links">
+        <a href="#" class="active">Inicio</a>
+        <a href="#">Mi Red</a>
+        <a href="#">Empleos</a>
+        <a href="#">Mensajes</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="main-grid">
+    <!-- Columna Izquierda -->
+    <aside class="sidebar-left">
+      <div class="card profile-card">
+        <div class="cover-bg"></div>
+        <div class="avatar">U</div>
+        <h3>Usuario LinkUp</h3>
+        <p class="role">Profesional en crecimiento</p>
+        <hr>
+        <div class="stats">
+          <div><span>Contactos</span><strong>128</strong></div>
+          <div><span>Vistas</span><strong>45</strong></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Columna Central -->
+    <main class="feed-column">
+      <div class="card create-post">
+        <form id="post-form">
+          <div class="input-row">
+            <div class="avatar-sm">U</div>
+            <textarea id="post-input" rows="2" placeholder="Comparte una idea, logro o noticia..." required></textarea>
+          </div>
+          <div class="form-actions">
+            <button type="submit" class="btn-primary">Publicar</button>
+          </div>
+        </form>
+      </div>
+
+      <div id="feed-list"></div>
+    </main>
+
+    <!-- Columna Derecha -->
+    <aside class="sidebar-right">
+      <div class="card">
+        <h4>Empleos recomendados</h4>
+        <div class="job-item">
+          <strong>Desarrollador Backend Python</strong>
+          <span>TechCorp • Remoto</span>
+        </div>
+        <div class="job-item">
+          <strong>Ingeniero de Datos Jr.</strong>
+          <span>DataFlow • Híbrido</span>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script>
+    const initialPosts = [
+      {
+        id: 1,
+        author: "Ana Gómez",
+        role: "Desarrolladora Full Stack",
+        time: "Hace 2 horas",
+        content: "¡Hola a todos! Acabo de lanzar mi primer proyecto web desplegado en GitHub Pages.",
+        likes: 12,
+        liked: false,
+        comments: ["¡Felicidades Ana!", "Excelente trabajo."]
+      },
+      {
+        id: 2,
+        author: "Carlos Ruiz",
+        role: "Ingeniero de Datos",
+        time: "Hace 5 horas",
+        content: "Compartiendo algunos consejos sobre arquitectura de software limpia y escalable.",
+        likes: 8,
+        liked: false,
+        comments: []
+      }
+    ];
+
+    let posts = JSON.parse(localStorage.getItem("linkup_posts")) || initialPosts;
+
+    function savePosts() {
+      localStorage.setItem("linkup_posts", JSON.stringify(posts));
+    }
+
+    function renderPosts(filterText = "") {
+      const feedList = document.getElementById("feed-list");
+      feedList.innerHTML = "";
+
+      const filtered = posts.filter(post =>
+        post.content.toLowerCase().includes(filterText.toLowerCase()) ||
+        post.author.toLowerCase().includes(filterText.toLowerCase())
+      );
+
+      filtered.forEach(post => {
+        const commentsHTML = post.comments
+          .map(c => `<div class="comment-item"><strong>Comentario:</strong> ${c}</div>`)
+          .join("");
+
+        const article = document.createElement("article");
+        article.className = "card post-card";
+        article.innerHTML = `
+          <div class="post-header">
+            <div class="avatar-sm">${post.author[0].toUpperCase()}</div>
+            <div>
+              <h4>${post.author}</h4>
+              <span>${post.role} • ${post.time}</span>
+            </div>
+          </div>
+          <p class="post-body">${post.content}</p>
+          <div class="post-actions">
+            <button type="button" class="btn-action ${post.liked ? "liked" : ""}" onclick="toggleLike(${post.id})">
+              👍 Recomendar (<span>${post.likes}</span>)
+            </button>
+            <button type="button" class="btn-action" onclick="toggleComments(this)">
+              💬 Comentar (${post.comments.length})
+            </button>
+          </div>
+          <div class="comments-box hidden">
+            <div class="comment-input-row">
+              <input type="text" placeholder="Escribe un comentario...">
+              <button type="button" onclick="addComment(${post.id}, this)">Enviar</button>
+            </div>
+            <div class="comments-list">${commentsHTML}</div>
+          </div>
+        `;
+        feedList.appendChild(article);
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      renderPosts();
+
+      const postInput = document.getElementById("post-input");
+      const postForm = document.getElementById("post-form");
+      const searchBar = document.getElementById("search-bar");
+
+      postInput.addEventListener("focus", () => (postInput.rows = 3));
+      postInput.addEventListener("blur", () => {
+        if (!postInput.value.trim()) postInput.rows = 2;
+      });
+
+      postForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const content = postInput.value.trim();
+        if (!content) return;
+
+        posts.unshift({
+          id: Date.now(),
+          author: "Usuario LinkUp",
+          role: "Profesional en crecimiento",
+          time: "Ahora mismo",
+          content: content,
+          likes: 0,
+          liked: false,
+          comments: []
+        });
+
+        savePosts();
+        renderPosts(searchBar.value);
+        postInput.value = "";
+        postInput.rows = 2;
+      });
+
+      searchBar.addEventListener("input", (e) => {
+        renderPosts(e.target.value);
+      });
+    });
+
+    function toggleLike(id) {
+      const post = posts.find(p => p.id === id);
+      if (!post) return;
+      post.liked = !post.liked;
+      post.likes += post.liked ? 1 : -1;
+      savePosts();
+      renderPosts(document.getElementById("search-bar").value);
+    }
+
+    function toggleComments(btn) {
+      const commentsBox = btn.closest(".post-card").querySelector(".comments-box");
+      commentsBox.classList.toggle("hidden");
+    }
+
+    function addComment(id, btn) {
+      const input = btn.previousElementSibling;
+      const text = input.value.trim();
+      if (!text) return;
+
+      const post = posts.find(p => p.id === id);
+      if (post) {
+        post.comments.push(text);
+        savePosts();
+        renderPosts(document.getElementById("search-bar").value);
+      }
+    }
+  </script>
+</body>
+</html>
